@@ -18,7 +18,7 @@ OUTPUT_SIZE = 3
 HIDDEN_SIZE = 64
 
 
-df = pd.read_csv(open(r'D:\OneDrive\论文\论文内容\一改\数据\031-20868车.csv')).iloc[:, 1:]
+df = pd.read_csv(open(r'...\数据\031-20868车.csv')).iloc[:, 1:]
 
 mm = MinMaxScaler()
 df[['driving_hour', 'driving_distance']] = mm.fit_transform(df[['driving_hour', 'driving_distance']])
@@ -89,13 +89,8 @@ for epoch in range(1, EPOCH+1):
             train_precision = precision_score(y_test, pred_y_val, average='weighted', zero_division=1)
             print('Epoch: ', epoch, '| train loss: %.4f' % loss.data.numpy(), '| validation loss: %.4f'
                   % val_loss.data.numpy(), '| train accuracy: %.4f' % train_acc, '| train precision: %.4f' % train_precision)
-            # early_stopping = EarlyStopping()
-            # early_stopping(val_loss, rnn)
-            # # 若满足 early stopping 要求
-            # if early_stopping.early_stop:
-            #     print("Early stopping")
-            #     # 结束模型训练
-            #     break
+            
+            
 
 test_output = rnn(x_test.to(torch.float32).view(-1, TIME_STEP, INPUT_SIZE))
 y_pred = torch.max(test_output, 1)[1].data.numpy()
@@ -121,5 +116,5 @@ plt.xlabel('Time')
 plt.ylabel('Risk Level')
 plt.yticks((0, 1, 2))
 plt.legend(loc='center left', bbox_to_anchor=(0, 0.8))
-plt.savefig(r'D:\OneDrive\论文\论文内容\终稿\图像\5324.svg',dpi=600, format='svg')
+plt.savefig(r'...\....tif',dpi=600, format='tif')
 plt.show()
