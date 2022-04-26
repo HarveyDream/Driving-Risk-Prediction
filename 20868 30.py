@@ -18,7 +18,7 @@ OUTPUT_SIZE = 3
 HIDDEN_SIZE = 64
 
 
-df = pd.read_csv(open(r'...\数据\031-20868车.csv')).iloc[:, 1:]
+df = pd.read_csv(open(r'...\数据\031-20868.csv')).iloc[:, 1:]
 
 mm = MinMaxScaler()
 df[['driving_hour', 'driving_distance']] = mm.fit_transform(df[['driving_hour', 'driving_distance']])
@@ -116,5 +116,5 @@ plt.xlabel('Time')
 plt.ylabel('Risk Level')
 plt.yticks((0, 1, 2))
 plt.legend(loc='center left', bbox_to_anchor=(0, 0.8))
-plt.savefig(r'...\....tif',dpi=600, format='tif')
+plt.savefig(r'...\20868.tif',dpi=600, format='tif')
 plt.show()
